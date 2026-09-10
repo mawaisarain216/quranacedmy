@@ -10,9 +10,12 @@ jobs:
   quality:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres?sslmode=require"
+      DIRECT_URL: "postgresql://postgres:postgres@localhost:5432/postgres?sslmode=require"
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Verify runner Node.js
         run: |

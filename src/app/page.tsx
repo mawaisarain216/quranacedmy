@@ -3,6 +3,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Hero, HowItWorks, Programs, TrialSection, WhyUs } from "@/components/home-sections";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const copy = await getSiteContent();
 

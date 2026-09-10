@@ -3,8 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 enum Role {
@@ -116,7 +117,7 @@ model Lesson {
   title       String
   description String?
   type        LessonType       @default(READING)
-  videoUrl    String?
+  videoUrl   String?
   content     String?
   position    Int
   module      CourseModule     @relation(fields: [moduleId], references: [id], onDelete: Cascade)

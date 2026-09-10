@@ -26,4 +26,15 @@ jobs:
         run: npx prisma generate
 
       - name: Production build
-        run: npm run build
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run build 2>&1 | tee build.log
+
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quran-academy-build-log
+          path: build.log
+          if-no-files-found: ignore

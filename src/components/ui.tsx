@@ -1,5 +1,74 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen } from "lucide-react";
-export function Button({children,href="#",variant="primary"}:{children:React.ReactNode;href?:string;variant?:"primary"|"secondary"}){return <Link href={href} className={variant==="primary"?"inline-flex items-center gap-2 rounded-full bg-[#0e5a45] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#0e5a45]/20 transition hover:-translate-y-0.5 hover:bg-[#083d30]":"inline-flex items-center gap-2 rounded-full border border-[#0e5a45]/15 bg-white px-6 py-3 text-sm font-semibold text-[#0e5a45] transition hover:bg-[#f3efe2]"}>{children}</Link>}
-export function IconCard({icon:Icon,title,text}:{icon:React.ElementType;title:string;text:string}){return <div className="rounded-3xl border border-[#0e5a45]/10 bg-white p-6 shadow-sm"><div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#f3efe2] text-[#0e5a45]"><Icon size={21}/></div><h3 className="font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{text}</p></div>}
-export function CourseCard({title,category,level,description}:{title:string;category:string;level:string;description:string}){return <article className="group rounded-[28px] border border-[#0e5a45]/10 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"><div className="mb-5 flex items-center justify-between"><span className="rounded-full bg-[#f3efe2] px-3 py-1 text-xs font-semibold text-[#0e5a45]">{category}</span><span className="text-xs text-slate-500">{level}</span></div><div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0e5a45] text-white"><BookOpen size={25}/></div><h3 className="mt-5 text-xl font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-slate-600">{description}</p><div className="mt-5 flex items-center gap-2 text-sm font-semibold text-[#0e5a45]">View program <ArrowRight size={16}/></div></article>}
+
+export function Button({
+  children,
+  href = "#",
+  variant = "primary",
+  className = "",
+}: {
+  children: React.ReactNode;
+  href?: string;
+  variant?: "primary" | "secondary";
+  className?: string;
+}) {
+  const base = "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)] focus-visible:ring-offset-2";
+  const styles = variant === "primary"
+    ? "bg-[var(--green)] text-white shadow-lg shadow-[rgba(14,90,69,0.2)] hover:-translate-y-0.5 hover:bg-[var(--green-dark)]"
+    : "border border-[var(--border)] bg-white text-[var(--green)] hover:bg-[var(--cream)]";
+
+  return (
+    <Link href={href} className={`${base} ${styles} ${className}`}>
+      {children}
+    </Link>
+  );
+}
+
+export function IconCard({
+  icon: Icon,
+  title,
+  text,
+}: {
+  icon: React.ElementType;
+  title: string;
+  text: string;
+}) {
+  return (
+    <div className="rounded-3xl border border-white/10 bg-white p-6 text-[var(--foreground)] shadow-sm">
+      <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[var(--cream)] text-[var(--green)]">
+        <Icon size={21} aria-hidden="true" />
+      </div>
+      <h3 className="font-semibold">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{text}</p>
+    </div>
+  );
+}
+
+export function CourseCard({
+  title,
+  category,
+  level,
+  description,
+}: {
+  title: string;
+  category: string;
+  level: string;
+  description: string;
+}) {
+  return (
+    <article className="group rounded-[28px] border border-[var(--border)] bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl">
+      <div className="mb-5 flex items-center justify-between gap-4">
+        <span className="rounded-full bg-[var(--cream)] px-3 py-1 text-xs font-semibold text-[var(--green)]">{category}</span>
+        <span className="text-xs text-slate-500">{level}</span>
+      </div>
+      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--green)] text-white">
+        <BookOpen size={25} aria-hidden="true" />
+      </div>
+      <h3 className="mt-5 text-xl font-semibold">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{description}</p>
+      <span className="mt-5 flex items-center gap-2 text-sm font-semibold text-[var(--green)]">
+        View program <ArrowRight size={16} aria-hidden="true" />
+      </span>
+    </article>
+  );
+}

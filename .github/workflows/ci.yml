@@ -20,7 +20,7 @@ jobs:
           npm --version
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --ignore-scripts --no-audit --no-fund
 
       - name: Generate Prisma Client
         run: npx prisma generate

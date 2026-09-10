@@ -11,7 +11,8 @@
     "vercel-build": "prisma generate && next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
+    "typegen": "next typegen",
+    "typecheck": "next typegen && tsc --noEmit",
     "check": "npm run typecheck && npm run lint && npm run build",
     "postinstall": "prisma generate"
   },

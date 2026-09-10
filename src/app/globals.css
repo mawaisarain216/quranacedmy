@@ -1,3 +1,88 @@
 @import "tailwindcss";
-:root{--background:#fbfaf5;--foreground:#10231c;--green:#0e5a45;--green-dark:#083d30;--gold:#c9a45c;--cream:#f3efe2}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--background);color:var(--foreground)}::selection{background:#c9a45c55}
+
+:root {
+  --background: #fbfaf5;
+  --foreground: #10231c;
+  --muted: #5f6d67;
+  --green: #0e5a45;
+  --green-dark: #083d30;
+  --gold: #c9a45c;
+  --cream: #f3efe2;
+  --border: rgba(14, 90, 69, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--background);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(201, 164, 92, 0.35);
+}
+
+:focus-visible {
+  outline: 3px solid rgba(201, 164, 92, 0.8);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  border-radius: 999px;
+  background: var(--green);
+  color: white;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  transition: top 160ms ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

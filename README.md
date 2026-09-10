@@ -1,6 +1,6 @@
 # Quran Academy LMS
 
-A production-oriented Quran education platform built with **Next.js 16 App Router, React 19, TypeScript, Tailwind CSS and PostgreSQL/Neon**.
+A production-oriented Quran education platform built with **Next.js 16 App Router, React 19, TypeScript, Tailwind CSS and PostgreSQL/Supabase**.
 
 ## Current foundation
 
@@ -14,6 +14,7 @@ A production-oriented Quran education platform built with **Next.js 16 App Route
 - Route loading, 404 and error boundaries
 - Production security headers in `next.config.ts`
 - Prisma/PostgreSQL data layer with safe singleton reuse
+- Supabase client foundation
 - Validated free-trial request API
 - Health-check endpoint at `/api/health`
 - Admin dashboard/CMS foundation
@@ -49,10 +50,10 @@ quranacedmy/
 
 1. Install Node.js 20.19+ (Node 22 LTS is recommended for this repository).
 2. Copy `.env.example` to `.env.local`.
-3. Add the Neon PostgreSQL `DATABASE_URL`.
+3. Add the Supabase PostgreSQL `DATABASE_URL` and `DIRECT_URL`.
 4. Run `npm install`.
 5. Run `npx prisma generate`.
-6. For development only, apply schema changes with your chosen Prisma migration workflow.
+6. For development only, apply schema changes with the chosen Prisma migration workflow.
 7. Run `npm run dev`.
 
 Useful checks:
@@ -64,13 +65,13 @@ npm run build
 npm run check
 ```
 
-## Vercel + Neon
+## Vercel + Supabase
 
-Connect the repository to Vercel and keep the root directory as `./`. Add `DATABASE_URL` to the correct Vercel environment(s). The repository is configured so Prisma Client is generated during dependency installation and the build.
+Connect the repository to Vercel and keep the root directory as `./`. Add the Supabase `DATABASE_URL` and `DIRECT_URL` to the correct Vercel environments. The repository is configured so Prisma Client is generated during dependency installation and the build.
 
 For production database changes, use committed Prisma migrations and `prisma migrate deploy`; do not use `prisma db push` against production.
 
-For preview deployments, use a separate Neon database/branch so preview migrations cannot modify production.
+For Vercel/serverless runtime queries, `DATABASE_URL` should use the Supabase transaction pooler. `DIRECT_URL` should use the Supabase session pooler for Prisma migrations/admin tooling.
 
 ## Security status
 

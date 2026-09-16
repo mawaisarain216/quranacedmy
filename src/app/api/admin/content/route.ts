@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { db } from "@/lib/db";
 
+export const runtime = "nodejs";
+
 const schema = z.record(z.string(), z.string());
 
 export async function POST(request: Request) {
@@ -14,6 +16,7 @@ export async function POST(request: Request) {
 
   try {
     const values = schema.parse(await request.json());
+
     await db.$transaction(
       Object.entries(values).map(([key, value]) =>
         db.siteContent.upsert({

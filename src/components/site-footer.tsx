@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, BookOpen, Facebook, Instagram, Mail, Youtube } from "lucide-react";
+import { ArrowUpRight, BookOpen } from "lucide-react";
 
 export function SiteFooter({ text }: { text: string }) {
   return (
@@ -14,12 +14,7 @@ export function SiteFooter({ text }: { text: string }) {
             </span>
           </Link>
           <p className="mt-5 text-sm leading-7 text-white/70">{text}</p>
-          <div className="mt-6 flex items-center gap-2">
-            <a href="mailto:info@alihassaninstitute.com" aria-label="Email Ali Hassan Institute" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/80 transition hover:border-[var(--ahi-gold)] hover:text-[var(--ahi-gold-light)]"><Mail size={17} /></a>
-            <a href="#" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/80 transition hover:border-[var(--ahi-gold)] hover:text-[var(--ahi-gold-light)]"><Facebook size={17} /></a>
-            <a href="#" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/80 transition hover:border-[var(--ahi-gold)] hover:text-[var(--ahi-gold-light)]"><Instagram size={17} /></a>
-            <a href="#" aria-label="YouTube" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/80 transition hover:border-[var(--ahi-gold)] hover:text-[var(--ahi-gold-light)]"><Youtube size={17} /></a>
-          </div>
+
         </div>
 
         <nav aria-label="Quick links" className="grid content-start gap-3">

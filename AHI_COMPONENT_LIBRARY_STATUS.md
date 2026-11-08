@@ -40,7 +40,17 @@ Build a shared AHI design-token layer and reusable UI components for:
 - [x] User approved initial component-library visual direction.
 - [x] Inspected README, package scripts, root layout, global CSS, homepage, current UI primitives, header/footer, login and admin layout.
 - [x] Created isolated feature branch.
-- [ ] Implement design tokens and shared primitives.
-- [ ] Integrate shared public header/footer without changing route behavior.
-- [ ] Integrate reusable form controls in existing public trial form and login UI where safe.
-- [ ] Run typecheck, lint and build; record exact results.
+- [x] Implement approved AHI design tokens and a shared component library (buttons, icon buttons, text/password/textarea/select fields, checkbox, radio group, switch, badges, alerts, cards, feature/stat/course/teacher cards, progress, skeleton, accordion, tabs, breadcrumbs, pagination, media frame, modal, file input and empty state).
+- [x] Refine the existing shared public header with responsive mobile navigation and the existing footer with reusable global AHI styling; preserve current route composition.
+- [x] Integrate reusable input and password controls into the login UI; preserve the current authentication placeholder and do not imply authentication is active.
+- [ ] Run typecheck, lint and build; record exact results. (Not yet executed; must be checked before merge.)
+
+## Implemented in this branch
+- `src/components/design-system.tsx`: shared accessible AHI UI primitives and LMS-ready components.
+- `src/components/site-header.tsx`: responsive desktop navigation and polished mobile dropdown menu; existing links/routes retained.
+- `src/components/site-footer.tsx`: shared branded footer with quick links and contact/social placeholders.
+- `src/app/globals.css`: approved AHI palette tokens and legacy theme aliases.
+- `src/app/login/page.tsx`: shared AHI input/password controls and visual styling; authentication remains intentionally unimplemented.
+
+## Verification note
+- No local runtime/build environment was available through the GitHub connector during this pass. Typecheck, lint, production build and browser-level mobile/desktop checks remain mandatory before merge. Do not describe this branch as error-free until those checks pass.

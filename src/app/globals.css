@@ -86,3 +86,52 @@ a {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* Ali Hassan Institute shared design tokens */
+:root {
+  --ahi-primary: #246c3f;
+  --ahi-hover: #1b5733;
+  --ahi-deep: #0b3424;
+  --ahi-heading: #123d2b;
+  --ahi-gold: #c89b40;
+  --ahi-gold-light: #e2ae4a;
+  --ahi-soft: #eaf3ed;
+  --ahi-background: #f7faf8;
+  --ahi-body: #33483e;
+  --ahi-muted: #65756d;
+  --ahi-border: #dde8e1;
+  --ahi-white: #ffffff;
+}
+
+html,
+body {
+  background: var(--ahi-background);
+}
+
+body {
+  color: var(--ahi-body);
+}
+
+.ahi-focus-ring:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--ahi-gold) 78%, white);
+  outline-offset: 3px;
+}
+
+.ahi-container {
+  width: min(100% - 2rem, 80rem);
+  margin-inline: auto;
+}
+
+.ahi-surface {
+  border: 1px solid var(--ahi-border);
+  border-radius: 1.25rem;
+  background: var(--ahi-white);
+  box-shadow: 0 8px 30px rgb(18 61 43 / 5%);
+}
+
+@media (min-width: 640px) {
+  .ahi-container {
+    width: min(100% - 3rem, 80rem);
+  }
+}

@@ -142,3 +142,25 @@ export function AhiModal({ open, title, onClose, children }: { open: boolean; ti
   if (!open) return null;
   return <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 p-4" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}><section role="dialog" aria-modal="true" aria-labelledby="ahi-modal-title" className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl"><div className="mb-4 flex items-center justify-between gap-4"><h2 id="ahi-modal-title" className="text-lg font-semibold text-[var(--ahi-heading)]">{title}</h2><AhiIconButton label="Close dialog" onClick={onClose}><X size={18} /></AhiIconButton></div>{children}</section></div>;
 }
+
+
+export function AhiFileInput({ label, hint, accept, multiple = false, onChange }: { label: string; hint?: string; accept?: string; multiple?: boolean; onChange?: (files: FileList | null) => void }) {
+  const id = useId();
+  return <div className="grid gap-1.5"><label htmlFor={id} className="text-sm font-semibold text-[var(--ahi-heading)]">{label}</label><input id={id} type="file" accept={accept} multiple={multiple} onChange={(event) => onChange?.(event.target.files)} className="block w-full cursor-pointer rounded-xl border border-dashed border-[var(--ahi-border)] bg-[var(--ahi-background)] text-sm text-[var(--ahi-muted)] file:mr-4 file:min-h-11 file:border-0 file:bg-[var(--ahi-soft)] file:px-4 file:font-semibold file:text-[var(--ahi-primary)] hover:border-[var(--ahi-primary)]" />{hint ? <p className="text-xs text-[var(--ahi-muted)]">{hint}</p> : null}</div>;
+}
+
+export function AhiTeacherCard({ name, role, image, description }: { name: string; role: string; image?: string; description?: string }) {
+  return <AhiCard><div className="flex items-start gap-4">{image ? <img src={image} alt={name} className="h-16 w-16 rounded-2xl object-cover" /> : <div aria-hidden="true" className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[var(--ahi-soft)] text-xl font-semibold text-[var(--ahi-primary)]">{name.slice(0, 1)}</div>}<div className="min-w-0"><h3 className="font-semibold text-[var(--ahi-heading)]">{name}</h3><p className="mt-1 text-xs font-medium text-[var(--ahi-primary)]">{role}</p></div></div>{description ? <p className="mt-4 text-sm leading-6 text-[var(--ahi-muted)]">{description}</p> : null}</AhiCard>;
+}
+
+export function AhiCourseCard({ title, category, level, description, href = "#" }: { title: string; category: string; level: string; description: string; href?: string }) {
+  return <article className="group rounded-2xl border border-[var(--ahi-border)] bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"><div className="flex items-center justify-between gap-3"><AhiBadge>{category}</AhiBadge><span className="text-xs text-[var(--ahi-muted)]">{level}</span></div><div className="mt-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--ahi-soft)] text-[var(--ahi-primary)]"><Check size={22} /></div><h3 className="mt-4 text-lg font-semibold text-[var(--ahi-heading)]">{title}</h3><p className="mt-2 text-sm leading-6 text-[var(--ahi-muted)]">{description}</p><a href={href} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[var(--ahi-primary)] hover:underline">Explore course <ChevronRight size={16} /></a></article>;
+}
+
+export function AhiEmptyState({ title, description, action }: { title: string; description: string; action?: ReactNode }) {
+  return <div className="grid justify-items-center rounded-2xl border border-dashed border-[var(--ahi-border)] bg-white px-6 py-12 text-center"><span className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[var(--ahi-soft)] text-[var(--ahi-primary)]"><BookOpenIcon /></span><h3 className="font-semibold text-[var(--ahi-heading)]">{title}</h3><p className="mt-2 max-w-md text-sm leading-6 text-[var(--ahi-muted)]">{description}</p>{action ? <div className="mt-5">{action}</div> : null}</div>;
+}
+
+function BookOpenIcon() {
+  return <span aria-hidden="true" className="text-lg">۞</span>;
+}
